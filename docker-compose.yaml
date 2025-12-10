@@ -10,20 +10,19 @@ services:
     networks:
       - velocity
 
-
-mysql_db:
+  mysql_db:                     # <<< moved under services
     image: 'mysql:8.0.28'
     volumes:
-       - ./init-script.sql:/docker-entrypoint-initdb.d/init-script.sql
+      - ./init-script.sql:/docker-entrypoint-initdb.d/init-script.sql
     ports:
-       - "3306:3306"
+      - "3306:3306"
     environment:
-       MYSQL_ROOT_PASSWORD: root
-       MYSQL_DATABASE: test
-       MYSQL_USER: USER
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: test
+      MYSQL_USER: USER
     networks:
-       - velocity
+      - velocity
 
 networks:
-    velocity:
-      driver: bridge
+  velocity:
+    driver: bridge
