@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  tomcat-service:
+    image: 'tomcat:9'
+    ports:
+      - "8081:8080"
+    volumes:
+      - "/mnt/project:/usr/local/tomcat/webapps"
+    networks:
+      - velocity
+
+
+mysql_db:
+    image: 'mysql:8.0.28'
+    volumes:
+       - ./init-script.sql:/docker-entrypoint-initdb.d/init-script.sql
+    ports:
+       - "3306:3306"
+    environment:
+       MYSQL_ROOT_PASSWORD: root
+       MYSQL_DATABASE: test
+       MYSQL_USER: USER
+    networks:
+       - velocity
+
+networks:
+    velocity:
+      driver: bridge
