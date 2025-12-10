@@ -1,4 +1,7 @@
 version: '3'
+networks:
+  velocity:
+    driver: bridge
 
 services:
   tomcat-service:
@@ -22,8 +25,4 @@ services:
       MYSQL_DATABASE: test
       MYSQL_USER: USER
     networks:
-      - velocity                        
-
-networks:
-  velocity:
-    driver: bridge
+      - velocity                       
