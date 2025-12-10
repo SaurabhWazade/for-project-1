@@ -6,7 +6,7 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - "/mnt/project:/usr/local/tomcat/webapps"
+      - "/mnt/wars:/usr/local/tomcat/webapps"
     networks:
       - velocity
 
