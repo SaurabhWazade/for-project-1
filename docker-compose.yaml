@@ -2,7 +2,7 @@ version: '3'
 
 services:
   tomcat-service:
-    image: 'tomcat:9'
+    image: tomcat:9
     ports:
       - "8080:8080"
     volumes:
@@ -10,8 +10,9 @@ services:
     networks:
       - velocity
 
-  mysql_db:                     
-    image: 'mysql:8.0.28'
+  mysql_db:
+    image: mysql:8.0.28
+    container_name: velocity     
     volumes:
       - ./init-script.sql:/docker-entrypoint-initdb.d/init-script.sql
     ports:
@@ -21,7 +22,7 @@ services:
       MYSQL_DATABASE: test
       MYSQL_USER: USER
     networks:
-      - velocity
+      - velocity                        
 
 networks:
   velocity:
