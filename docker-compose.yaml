@@ -10,7 +10,7 @@ services:
     networks:
       - velocity
 
-  mysql_db:                     # <<< moved under services
+  mysql_db:                     
     image: 'mysql:8.0.28'
     volumes:
       - ./init-script.sql:/docker-entrypoint-initdb.d/init-script.sql
